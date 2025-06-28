@@ -1,0 +1,36 @@
+<h1> TODO not using rowhtml</h1>
+
+<html>
+
+<body>
+  <input type="text"> </input>
+  <button onclick="Addto()" , style="background-color: chartreuse; color: azure;"> Add todoa!</button>
+
+</body>
+<script>
+  let ctr = 1;
+
+  function deletetodo(index) {
+    const element = document.getElementById(index);
+    element.parentNode.removeChild(element);
+
+  }
+
+  function Addto() {
+    const value = document.querySelector("input").value; // when you create a element or todo ... this is 
+    const spanv = document.createElement("span");
+    const button = document.createElement("button");
+      button.innerHTML="Delete";
+    const deve = document.createElement("div");
+    spanv.innerHTML = value;
+
+    deve.appendChild(spanv);
+    deve.appendChild(button);
+    document.querySelector("body").appendChild(deve);
+  }
+
+
+
+</script>
+
+</html>

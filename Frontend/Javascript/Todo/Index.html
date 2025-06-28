@@ -1,0 +1,33 @@
+<html>
+  <body>
+        <input type="text"> </input>
+        <button onclick="Addto()" , style="background-color: chartreuse; color: azure;"> Add todoa!</button>
+        
+  </body>
+      <script>
+                 let   ctr=1;
+                   
+                  function deletetodo( index){
+                      const element= document.getElementById(index);
+                      element.parentNode.removeChild( element);
+                   
+              }
+
+              function Addto(){
+          const newtodo = document.querySelector("input");
+                   const value = newtodo.value;
+                 
+                   const newdev = document.createElement("div");
+                                  
+                                 ctr = ctr  + 1;
+                       newdev .setAttribute("id" , ctr);
+                        
+                    newdev.innerHTML= 
+                       "<div>"+ value + "</div><button   onclick='deletetodo( "+ ctr + ")'> Delete Todo</button> ";
+                    document.querySelector("body").appendChild(newdev);
+              }
+             
+               
+
+      </script>
+</html>
