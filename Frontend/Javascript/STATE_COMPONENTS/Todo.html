@@ -1,33 +1,63 @@
 <html>
       <body>
-             <input type ="text"></input>
+             <input type ="text"/>
              <button onclick="Addtodo()"> Add Todo!</button>
+              <button onclick=" Deletetodofirst()">
+                      Delete First Todo </button>
+              <button onclick="DeletetodozLast()">
+                Delete Last Todo</button>
+
+              <div id ="todos" style="color:blue;"> </div>
       </body>
       <script>
              let todos=[];
+            
+       // add the todo Here...........
              function Addtodo(){
-                 todos.push({
-                   title:document.querySelector("input").value
-                 })
-                 render();
+              todos.push({
+                 title:document.querySelector("input").value
+              })
+              render()
              }
 
-             function deletetodo(){
-                render();
-             }
+// Delete the todo last 
+   function Deletetodofirst() {
+            todos.splice(0,1) // remove the first element from the array
+      render();
 
-             function render(){
-                  for( let i =0; i < todos.length(); i++) {
-                    const todo = todos[i];
-                    const div =document.createComment("div");
+   }
+
+   function DeletetodozLast(){  // remove the  last  todo element 
+           todos.splice(todos.length -1 , 1);
+           render();
+   }
+     
+    function deletetodo(index){
+          todos.splice(index, 1);
+          render();
+    }
+
+             function createTodoComponents(todo , index){
+                  const div =document.createElement("div");
                     const h1 = document.createElement("h1");
                     const button= document.createElement("button");
 
                     button.innerHTML="Delete";
+                     button.setAttribute("onclick" , "deletetodo("+ index +")");
                     h1.innerHTML=todo.title;
                     div.appendChild(h1);
                     div.appendChild(button);
-                  document.querySelector("body").appendChild(div);
+                    return div;
+
+             }
+            
+             // react 
+             function render(){
+                    document.querySelector("#todos").innerHTML="";
+                  for( let i =0; i < todos.length; i++) {
+                       const element = createTodoComponents(todos[i] ,i);
+                   
+                  document.querySelector("#todos").appendChild(element);
 
 
                   }
