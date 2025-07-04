@@ -8,4 +8,4 @@ setTimeout(function () {
   }, 3000)
 }, 1000)
 
-// this is function asyn call
+// this is function async call
